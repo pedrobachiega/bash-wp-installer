@@ -11,9 +11,10 @@ echo ">> Moving to $wp_path"
 cd $wp_path
 
 echo ">> Downloading latest version of Wordpress"
-curl --silent -O http://wordpress.org/latest.zip
-unzip -q latest.zip
-rm latest.zip
+# curl --silent -O http://wordpress.org/latest.zip
+curl --silent -O http://br.wordpress.org/latest-pt_BR.zip
+unzip -q latest-pt_BR.zip
+rm latest-pt_BR.zip
 echo ">> Moving into Wordpres folder"
 cd wordpress/
 
