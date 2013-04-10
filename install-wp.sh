@@ -5,10 +5,14 @@ TODAY=$(date +%Y%m%d)
 
 echo "==== Starting Wordpress installation proccess ===="
 
-echo -e "<< Path installation (like '/home/user/'): "
-read wp_path
-echo ">> Moving to $wp_path"
-cd $wp_path
+echo ">> Downloading plugins list"
+curl --silent -O https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-list.txt
+
+# echo -e "<< Path installation (like '/home/user/'): "
+# read wp_path
+# echo ">> Moving to $wp_path"
+# cd $wp_path
+cd $HOME
 
 echo ">> Downloading latest version of Wordpress"
 # curl --silent -O http://wordpress.org/latest.zip
@@ -19,7 +23,7 @@ echo ">> Moving into Wordpres folder"
 cd wordpress/
 
 echo ">> Downloading config file"
-curl --silent -O http://res.pedrobachiega.com/wordpress/wp-config.php
+curl --silent -O https://gist.github.com/pedrobachiega/5358302/raw/wp-config.php
 #TODO
 #salt=$(curl "https://api.wordpress.org/secret-key/1.1/salt/")
 #sed_expression="s/\/\/ Authentication Unique Keys and Salts/'$salt'/g"
@@ -48,11 +52,11 @@ while read LINE; do
   file=$(echo $LINE | sed "s/http:\/\/downloads.wordpress.org\/plugin\///g")
   unzip -qo $file
   rm $file
-done < $SCRIPT_PATH/plugins-list.txt
+done < $SCRIPT_PATH/wp-plugins-list.txt
 
-echo ">> Downloading RD Mkt Theme"
+echo ">> Downloading RD Blog Theme"
 cd ../themes/
-r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rd-mkt.git)
+r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rdblog.git)
 
 
 echo "==== Wordpress installation complete! ===="
