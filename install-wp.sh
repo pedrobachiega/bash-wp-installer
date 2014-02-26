@@ -6,7 +6,7 @@ TODAY=$(date +%Y%m%d)
 echo "==== Starting Wordpress installation proccess ===="
 
 echo ">> Downloading plugins list"
-curl --silent -O https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-list.txt
+curl --silent -O -L https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-list.txt
 
 # echo -e "<< Path installation (like '/home/user/'): "
 # read wp_path
@@ -15,15 +15,15 @@ curl --silent -O https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-li
 cd $HOME
 
 echo ">> Downloading latest version of Wordpress"
-# curl --silent -O http://wordpress.org/latest.zip
-curl --silent -O http://br.wordpress.org/latest-pt_BR.zip
+# curl --silent -O -L http://wordpress.org/latest.zip
+curl --silent -O -L http://br.wordpress.org/latest-pt_BR.zip
 unzip -q latest-pt_BR.zip
 rm latest-pt_BR.zip
 echo ">> Moving into Wordpres folder"
 cd wordpress/
 
 echo ">> Downloading config file"
-curl --silent -O https://gist.github.com/pedrobachiega/5358302/raw/wp-config.php
+curl --silent -O -L https://gist.github.com/pedrobachiega/5358302/raw/wp-config.php
 #TODO
 #salt=$(curl "https://api.wordpress.org/secret-key/1.1/salt/")
 #sed_expression="s/\/\/ Authentication Unique Keys and Salts/'$salt'/g"
@@ -48,7 +48,7 @@ sed -i.bkp "s/wp_xpto_/wp_$wp_db_prefix/g" wp-config.php
 echo ">> Downloading common plugins"
 cd wp-content/plugins/
 while read LINE; do
-  curl --silent -O "$LINE"
+  curl --silent -O -L "$LINE"
   file=$(echo $LINE | sed "s/http:\/\/downloads.wordpress.org\/plugin\///g")
   unzip -qo $file
   rm $file
