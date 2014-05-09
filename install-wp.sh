@@ -56,7 +56,7 @@ done < $SCRIPT_PATH/wp-plugins-list.txt
 
 echo ">> Downloading RD Blog Theme"
 cd ../themes/
-r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rdblog.git)
+r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rdblog-v2.git)
 
 
 echo "==== Wordpress installation complete! ===="
