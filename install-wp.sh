@@ -12,7 +12,7 @@ curl --silent -O -L https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins
 # read wp_path
 # echo ">> Moving to $wp_path"
 # cd $wp_path
-cd $HOME
+cd $PWD
 
 echo ">> Downloading latest version of Wordpress"
 # curl --silent -O -L http://wordpress.org/latest.zip
