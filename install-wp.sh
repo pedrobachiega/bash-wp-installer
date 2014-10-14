@@ -6,7 +6,7 @@ TODAY=$(date +%Y%m%d)
 echo "==== Starting Wordpress installation proccess ===="
 
 echo ">> Downloading plugins list"
-curl --silent -O -L https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-list.txt
+curl --silent -O -L https://gist.githubusercontent.com/LeoSL/512529a3cc5c03ac3bea/raw/9b2ecfd06c0212e96a6d63ebd4138c587b4efc42/wp-plugins-list.txt
 
 # echo -e "<< Path installation (like '/home/user/'): "
 # read wp_path
