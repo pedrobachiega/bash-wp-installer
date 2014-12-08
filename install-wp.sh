@@ -61,7 +61,8 @@ r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rdblog-v2.git)
 
 echo "==== Wordpress installation complete! ===="
 
-cd ../
+cd ~/
+ls
 echo -e "<< Enter blog path name: "
 read wp_blogpath
 mv wordpress/* $wp_blogpath
