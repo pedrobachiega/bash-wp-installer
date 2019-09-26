@@ -6,7 +6,7 @@ TODAY=$(date +%Y%m%d)
 echo "==== Starting Wordpress installation proccess ===="
 
 echo ">> Downloading plugins list"
-curl --silent -O -L https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-list.txt
+curl --silent -O -L  https://gist.github.com/pedrobachiega/5358338/raw/wp-plugins-list.txt
 
 # echo -e "<< Path installation (like '/home/user/'): "
 # read wp_path
@@ -56,7 +56,21 @@ done < $SCRIPT_PATH/wp-plugins-list.txt
 
 echo ">> Downloading RD Blog Theme"
 cd ../themes/
-r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rdblog.git)
+r=$(git clone -q git://github.com/ResultadosDigitais/wptheme-rdblog-v2.git)
 
 
 echo "==== Wordpress installation complete! ===="
+
+cd ~/
+ls
+echo -e "<< Enter blog path name: "
+read wp_blogpath
+mv wordpress/* $wp_blogpath
+
+cd $wp_blogpath
+cd wp-content/themes/wptheme-rdblog-v2/
+echo -e "<< Enter GitHub branch name: "
+read wp_github_branch
+git checkout $wp_github_branch
+
+echo "==== Blog customization complete! ===="
